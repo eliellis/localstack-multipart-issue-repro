@@ -1,0 +1,20 @@
+services:
+  localstack:
+    restart: always
+    image: localstack/localstack-pro:latest
+    container_name: localstack-pro
+    ports:
+      - '4566:4566'
+      - '4510-4559:4510-4559'
+    environment:
+      - DEBUG=1
+      - AWS_DEFAULT_REGION=us-east-1
+      - LOCALSTACK_API_KEY=$LOCALSTACK_API_KEY
+      - DOCKER_HOST=unix:///var/run/docker.sock
+      - SKIP_SSL_CERT_DOWNLOAD=1
+      - DYNAMODB_DELAY_TRANSIENT_STATUSES=1
+      - S3_DIR=/tmp/s3-buckets
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - $PWD/.localstack/data/s3:/tmp/s3-buckets
+      - $PWD/.localstack/data:/var/lib/localstack
