@@ -45,7 +45,7 @@ This only occurs if `PERSISTENCE` is `0` and `S3_DIR` is set.
 
 ## Repro instructions
 
-Assume you have a `.env` file with the following contents:
+Assume you have a `.env` file in the root of the checkout folder with the following contents:
 
 ```bash
 LOCALSTACK_API_KEY=XXXXXX
